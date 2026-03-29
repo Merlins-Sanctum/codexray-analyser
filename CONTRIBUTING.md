@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for contributing to `pyscope-local-analyzer`.
+Thanks for contributing to `codexray-analyser`.
 
 ## Local setup
 

@@ -1,15 +1,15 @@
 """Public package API for codexray."""
 
-from .analyzer import analyze_file_snippet, analyze_path, analyze_snippet
-from .config import AnalyzerConfig
+from .analyser import analyse_file_snippet, analyse_path, analyse_snippet
+from .config import AnalyserConfig
 from .models import AnalysisResult, Finding, GraphData
 
 __all__ = [
-    "AnalyzerConfig",
+    "AnalyserConfig",
     "AnalysisResult",
     "Finding",
     "GraphData",
-    "analyze_path",
-    "analyze_snippet",
-    "analyze_file_snippet",
+    "analyse_path",
+    "analyse_snippet",
+    "analyse_file_snippet",
 ]

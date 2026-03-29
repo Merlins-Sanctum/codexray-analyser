@@ -2,9 +2,9 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from .config import AnalyzerConfig
+from .config import AnalyserConfig
 from .graph import build_graph, merge_graphs
-from .limits import AnalyzerLimitError
+from .limits import AnalyserLimitError
 from .models import AnalysisResult, Finding
 from .parsers import (
     discover_input_files,
@@ -17,8 +17,8 @@ from .parsers import (
 from .rules import RuleContext, run_requirements_rules, run_rules
 
 
-def analyze_path(path: str | Path, config: AnalyzerConfig | None = None) -> AnalysisResult:
-    cfg = config or AnalyzerConfig()
+def analyse_path(path: str | Path, config: AnalyserConfig | None = None) -> AnalysisResult:
+    cfg = config or AnalyserConfig()
     root = Path(path)
     if not root.exists():
         raise FileNotFoundError(f"Path does not exist: {root}")
@@ -52,7 +52,7 @@ def analyze_path(path: str | Path, config: AnalyzerConfig | None = None) -> Anal
                 run_rules(RuleContext(file_path=file_path, source=source, tree=tree))
             )
             graphs.append(build_graph(file_path, tree))
-        except (AnalyzerLimitError, SyntaxError, OSError, ValueError) as exc:
+        except (AnalyserLimitError, SyntaxError, OSError, ValueError) as exc:
             all_findings.append(_parsing_finding(file_path, str(exc)))
 
     return AnalysisResult(
@@ -61,19 +61,19 @@ def analyze_path(path: str | Path, config: AnalyzerConfig | None = None) -> Anal
         ),
         graph=merge_graphs(graphs),
         metadata={
-            "analyzed_path": str(root),
+            "analysed_path": str(root),
             "offline_mode": not cfg.allow_network,
-            "files_analyzed": len(files),
+            "files_analysed": len(files),
         },
     )
 
 
-def analyze_snippet(
+def analyse_snippet(
     source: str,
     file_path: str = "snippet.py",
-    config: AnalyzerConfig | None = None,
+    config: AnalyserConfig | None = None,
 ) -> AnalysisResult:
-    cfg = config or AnalyzerConfig()
+    cfg = config or AnalyserConfig()
     tree = parse_python_source(source, cfg)
     path = Path(file_path)
     findings = run_rules(RuleContext(file_path=path, source=source, tree=tree))
@@ -85,20 +85,20 @@ def analyze_snippet(
     )
 
 
-def analyze_file_snippet(
+def analyse_file_snippet(
     path: str | Path,
     start_line: int,
     end_line: int,
-    config: AnalyzerConfig | None = None,
+    config: AnalyserConfig | None = None,
 ) -> AnalysisResult:
-    cfg = config or AnalyzerConfig()
+    cfg = config or AnalyserConfig()
     target = Path(path)
     source = read_file_text(target, cfg)
     snippet = select_line_range(source, start_line, end_line)
-    return analyze_snippet(snippet, file_path=str(target), config=cfg)
+    return analyse_snippet(snippet, file_path=str(target), config=cfg)
 
 
-def _load_source(path: Path, config: AnalyzerConfig) -> str:
+def _load_source(path: Path, config: AnalyserConfig) -> str:
     if path.suffix.lower() == ".ipynb":
         return parse_notebook(path, config)
     if path.suffix.lower() == ".py":

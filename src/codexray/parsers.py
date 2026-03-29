@@ -5,38 +5,43 @@ import json
 from collections.abc import Iterable
 from pathlib import Path
 
-from .config import AnalyzerConfig
-from .limits import AnalyzerLimitError, enforce_ast_limit, enforce_bytes_limit, enforce_text_limit
+from .config import AnalyserConfig
+from .limits import (
+    AnalyserLimitError,
+    enforce_ast_limit,
+    enforce_bytes_limit,
+    enforce_text_limit,
+)
 
 SUPPORTED_SUFFIXES = {".py", ".ipynb", ".txt", ".in", ".cfg"}
 
 
-def read_file_text(path: Path, config: AnalyzerConfig) -> str:
+def read_file_text(path: Path, config: AnalyserConfig) -> str:
     size = path.stat().st_size
     enforce_bytes_limit(size, config.max_file_size_bytes, f"File {path}")
     return path.read_text(encoding="utf-8", errors="strict")
 
 
-def parse_python_source(source: str, config: AnalyzerConfig) -> ast.AST:
+def parse_python_source(source: str, config: AnalyserConfig) -> ast.AST:
     enforce_text_limit(source, config.max_snippet_chars, "Python source")
     tree = ast.parse(source)
     enforce_ast_limit(tree, config)
     return tree
 
 
-def parse_notebook(path: Path, config: AnalyzerConfig) -> str:
+def parse_notebook(path: Path, config: AnalyserConfig) -> str:
     size = path.stat().st_size
     enforce_bytes_limit(size, config.max_notebook_json_bytes, f"Notebook {path}")
     raw = path.read_text(encoding="utf-8")
     try:
         notebook = json.loads(raw)
     except json.JSONDecodeError as exc:
-        raise AnalyzerLimitError(f"Notebook JSON is invalid: {exc}") from exc
+        raise AnalyserLimitError(f"Notebook JSON is invalid: {exc}") from exc
     cells = notebook.get("cells", [])
     if not isinstance(cells, list):
-        raise AnalyzerLimitError("Notebook cells payload is invalid")
+        raise AnalyserLimitError("Notebook cells payload is invalid")
     if len(cells) > config.max_notebook_cells:
-        raise AnalyzerLimitError(
+        raise AnalyserLimitError(
             f"Notebook has {len(cells)} cells, over max {config.max_notebook_cells}"
         )
 
