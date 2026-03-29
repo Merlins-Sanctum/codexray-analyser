@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/pypi/l/codexray-analyser)](https://github.com/Merlins-Sanctum/codexray-analyser/blob/main/LICENSE)
 [![CI](https://img.shields.io/github/actions/workflow/status/Merlins-Sanctum/codexray-analyser/ci.yml?branch=main&label=CI)](https://github.com/Merlins-Sanctum/codexray-analyser/actions/workflows/ci.yml)
 
-Latest stable package: `0.1.2` (tag `v0.1.3`)
+Latest stable package: `0.1.4` (tag `v0.1.4`)
 
 ![Codexray CLI demo](https://raw.githubusercontent.com/Merlins-Sanctum/codexray-analyser/main/assets/demo.gif)
 
