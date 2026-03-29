@@ -2,12 +2,12 @@
 
 [![PyPI version](https://img.shields.io/pypi/v/codexray-analyser)](https://pypi.org/project/codexray-analyser/)
 [![Python versions](https://img.shields.io/pypi/pyversions/codexray-analyser)](https://pypi.org/project/codexray-analyser/)
-[![License](https://img.shields.io/pypi/l/codexray-analyser)](LICENSE)
+[![License](https://img.shields.io/pypi/l/codexray-analyser)](https://github.com/Merlins-Sanctum/codexray-analyser/blob/main/LICENSE)
 [![CI](https://img.shields.io/github/actions/workflow/status/Merlins-Sanctum/codexray-analyser/ci.yml?branch=main&label=CI)](https://github.com/Merlins-Sanctum/codexray-analyser/actions/workflows/ci.yml)
 
-![Codexray CLI demo placeholder](assets/demo-placeholder.svg)
+Latest stable package: `0.1.1` (tag `v0.1.1`)
 
-> Replace this with a real GIF at `assets/demo.gif` when ready.
+![Codexray CLI demo](https://raw.githubusercontent.com/Merlins-Sanctum/codexray-analyser/main/assets/demo.gif)
 
 ```bash
 codexray "C:\path\to\database.py" --summary --findings-only --min-severity high
@@ -108,7 +108,7 @@ codexray ./my_project --graph-html codexray-graph.html
 
 ## Dependency graph preview
 
-![Codexray graph example](assets/graph-example.svg)
+![Codexray tree graph example](https://raw.githubusercontent.com/Merlins-Sanctum/codexray-analyser/main/assets/graph-tree-style.png)
 
 Sample graph JSON snippet:
 
@@ -216,6 +216,12 @@ ffmpeg -i demo.mp4 -vf "fps=10,scale=1200:-1:flags=lanczos" -loop 0 assets/demo.
 ```
 
 Keep file size lightweight so README loads quickly.
+
+## Social preview asset
+
+For LinkedIn posts, use this card:
+
+![Codexray LinkedIn card](https://raw.githubusercontent.com/Merlins-Sanctum/codexray-analyser/main/assets/linkedin-card-v2.png)
 
 ## Launch checklist
 
