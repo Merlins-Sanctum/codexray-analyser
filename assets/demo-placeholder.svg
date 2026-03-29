@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
+  <rect width="1200" height="700" fill="#0b1020"/>
+  <rect x="40" y="40" width="1120" height="620" rx="12" fill="#111827" stroke="#374151"/>
+  <text x="70" y="95" fill="#34d399" font-family="Consolas, monospace" font-size="28">codexray --summary --findings-only --min-severity high</text>
+  <text x="70" y="145" fill="#e5e7eb" font-family="Consolas, monospace" font-size="22">Codexray summary</text>
+  <text x="70" y="185" fill="#9ca3af" font-family="Consolas, monospace" font-size="20">Path: dq-dashboard/database.py</text>
+  <text x="70" y="220" fill="#9ca3af" font-family="Consolas, monospace" font-size="20">Files analysed: 1</text>
+  <text x="70" y="255" fill="#9ca3af" font-family="Consolas, monospace" font-size="20">Offline mode: True</text>
+  <text x="70" y="290" fill="#9ca3af" font-family="Consolas, monospace" font-size="20">Findings by severity: critical: 1, high: 1, medium: 0, low: 2</text>
+  <text x="70" y="340" fill="#e5e7eb" font-family="Consolas, monospace" font-size="22">Top findings:</text>
+  <text x="70" y="380" fill="#fca5a5" font-family="Consolas, monospace" font-size="20">- [critical] SEC002: Dangerous builtin eval (database.py)</text>
+  <text x="70" y="415" fill="#fdba74" font-family="Consolas, monospace" font-size="20">- [high] SEC001: Shell command execution (database.py)</text>
+  <text x="70" y="470" fill="#93c5fd" font-family="Consolas, monospace" font-size="20">Replace this placeholder with assets/demo.gif</text>
+  <text x="70" y="505" fill="#93c5fd" font-family="Consolas, monospace" font-size="20">See README section: "How to create the demo GIF"</text>
+</svg>

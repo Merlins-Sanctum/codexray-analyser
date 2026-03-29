@@ -1,12 +1,12 @@
 from __future__ import annotations
 
 import argparse
+import html
 import json
 import math
 from collections import Counter
 from dataclasses import asdict
 from pathlib import Path
-from xml.sax.saxutils import escape
 
 from .analyser import analyse_file_snippet, analyse_path, analyse_snippet
 from .config import AnalyserConfig
@@ -149,13 +149,13 @@ def _write_graph_dot(graph: dict[str, object], path: Path) -> None:
     edges = graph.get("edges", [])
     lines = ["digraph codexray {", '  rankdir="LR";']
     for node in nodes:
-        node_id = escape(str(node.get("node_id", ""))).replace('"', '\\"')
-        label = escape(str(node.get("label", ""))).replace('"', '\\"')
+        node_id = html.escape(str(node.get("node_id", ""))).replace('"', '\\"')
+        label = html.escape(str(node.get("label", ""))).replace('"', '\\"')
         lines.append(f'  "{node_id}" [label="{label}"];')
     for edge in edges:
-        source = escape(str(edge.get("source", ""))).replace('"', '\\"')
-        target = escape(str(edge.get("target", ""))).replace('"', '\\"')
-        relation = escape(str(edge.get("relation", ""))).replace('"', '\\"')
+        source = html.escape(str(edge.get("source", ""))).replace('"', '\\"')
+        target = html.escape(str(edge.get("target", ""))).replace('"', '\\"')
+        relation = html.escape(str(edge.get("relation", ""))).replace('"', '\\"')
         lines.append(f'  "{source}" -> "{target}" [label="{relation}"];')
     lines.append("}")
     path.write_text("\n".join(lines), encoding="utf-8")
@@ -176,7 +176,7 @@ def _write_graph_html(graph: dict[str, object], path: Path) -> None:
         x = cx + radius * math.cos(angle)
         y = cy + radius * math.sin(angle)
         node_id = str(node.get("node_id", ""))
-        label = escape(str(node.get("label", "")))
+        label = html.escape(str(node.get("label", "")))
         positioned[node_id] = (x, y, label)
 
     svg_lines = [
@@ -187,7 +187,7 @@ def _write_graph_html(graph: dict[str, object], path: Path) -> None:
     for edge in edges:
         source = str(edge.get("source", ""))
         target = str(edge.get("target", ""))
-        relation = escape(str(edge.get("relation", "")))
+        relation = html.escape(str(edge.get("relation", "")))
         if source not in positioned or target not in positioned:
             continue
         x1, y1, _ = positioned[source]
@@ -212,7 +212,7 @@ def _write_graph_html(graph: dict[str, object], path: Path) -> None:
         )
 
     svg_lines.append("</svg>")
-    html = f"""<!doctype html>
+    html_doc = f"""<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -235,7 +235,7 @@ def _write_graph_html(graph: dict[str, object], path: Path) -> None:
   </body>
 </html>
 """
-    path.write_text(html, encoding="utf-8")
+    path.write_text(html_doc, encoding="utf-8")
 
 
 if __name__ == "__main__":

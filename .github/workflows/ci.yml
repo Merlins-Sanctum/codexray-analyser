@@ -35,7 +35,8 @@ jobs:
       - name: Static security scan
         run: bandit -q -r src
 
-      - name: Dependency vulnerability scan
+      - name: Prepare runtime dependency audit
+        id: prepare_audit
         run: |
           python - <<'PY'
           import pathlib
@@ -48,5 +49,14 @@ jobs:
               encoding="utf-8",
           )
           print(f"Runtime dependencies found: {len(deps)}")
+          pathlib.Path(".audit-count").write_text(str(len(deps)), encoding="utf-8")
           PY
-          if [ -s runtime-requirements.txt ]; then pip-audit -r runtime-requirements.txt --strict; else echo "No runtime dependencies to audit."; fi
+          echo "runtime_dep_count=$(cat .audit-count)" >> "$GITHUB_OUTPUT"
+
+      - name: Dependency vulnerability scan
+        if: steps.prepare_audit.outputs.runtime_dep_count != '0'
+        run: pip-audit -r runtime-requirements.txt --strict
+
+      - name: Dependency vulnerability scan (no runtime dependencies)
+        if: steps.prepare_audit.outputs.runtime_dep_count == '0'
+        run: echo "No runtime dependencies to audit."
