@@ -1,6 +1,6 @@
 # Codexray
 
-[![PyPI version](https://img.shields.io/pypi/v/codexray-analyser)](https://pypi.org/project/codexray-analyser/)
+[![PyPI version](https://img.shields.io/pypi/v/codexray_analyser)](https://pypi.org/project/codexray-analyser/)
 [![Python versions](https://img.shields.io/pypi/pyversions/codexray-analyser)](https://pypi.org/project/codexray-analyser/)
 [![License](https://img.shields.io/pypi/l/codexray-analyser)](https://github.com/Merlins-Sanctum/codexray-analyser/blob/main/LICENSE)
 [![CI](https://img.shields.io/github/actions/workflow/status/Merlins-Sanctum/codexray-analyser/ci.yml?branch=main&label=CI)](https://github.com/Merlins-Sanctum/codexray-analyser/actions/workflows/ci.yml)
@@ -191,57 +191,6 @@ Examples:
   - Replace `eval` or `exec` with safe parsing and strict allow-lists.
 - `DEP001` unpinned dependency:
   - Pin versions in requirements files with `==` where practical.
-
-## Troubleshooting
-
-- `File parsing failed`:
-  - Check syntax errors or unsupported file encoding.
-- `exceeds ... bytes/chars`:
-  - Increase limits in config for controlled internal usage.
-- Empty findings:
-  - Confirm the target path includes `.py` or `.ipynb` sources.
-
-## How to create the demo GIF
-
-Record a short terminal run (10 to 20 seconds) that shows:
-
-1. `codexray --summary`
-2. `codexray --graph-html`
-3. opening the generated graph HTML
-
-Then convert to GIF with `ffmpeg` and save as `assets/demo.gif`:
-
-```bash
-ffmpeg -i demo.mp4 -vf "fps=10,scale=1200:-1:flags=lanczos" -loop 0 assets/demo.gif
-```
-
-Keep file size lightweight so README loads quickly.
-
-## Social preview asset
-
-For LinkedIn posts, use this card:
-
-![Codexray LinkedIn card](https://raw.githubusercontent.com/Merlins-Sanctum/codexray-analyser/main/assets/linkedin-card-v2.png)
-
-## Launch checklist
-
-- Share a short product post on LinkedIn with the demo GIF.
-- Post in Python and data engineering communities with one practical use case.
-- Add one issue template for feature requests and invite feedback.
-- Ask first users to share real files where summary mode helped.
-
-## Local development
-
-```bash
-python -m pip install -e .
-python -m pip install pytest ruff bandit pip-audit build twine
-python -m ruff check .
-python -m pytest
-python -m bandit -q -r src
-python -m pip-audit
-python -m build
-python -m twine check dist/*
-```
 
 ## Contributing
 
