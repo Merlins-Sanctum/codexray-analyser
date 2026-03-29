@@ -59,6 +59,36 @@ Save output to JSON:
 codexray ./my_project --output codexray-report.json
 ```
 
+Print only a compact summary:
+
+```bash
+codexray ./my_project --summary
+```
+
+Print findings only (no graph payload):
+
+```bash
+codexray ./my_project --findings-only
+```
+
+Show only high and critical findings:
+
+```bash
+codexray ./my_project --findings-only --min-severity high
+```
+
+Export graph for Graphviz:
+
+```bash
+codexray ./my_project --graph-dot codexray-graph.dot
+```
+
+Export graph to an offline HTML visual:
+
+```bash
+codexray ./my_project --graph-html codexray-graph.html
+```
+
 ## Python API usage
 
 ```python
@@ -97,6 +127,8 @@ Graph output contains:
 
 - `nodes`: entities such as files, imports, and functions
 - `edges`: relationships such as `imports`, `contains`, and `calls`
+- DOT export for Graphviz via `--graph-dot`
+- offline HTML graph visual via `--graph-html`
 
 Typical use:
 
