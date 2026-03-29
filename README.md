@@ -1,11 +1,10 @@
 # Codexray
 
-[![PyPI version](https://img.shields.io/pypi/v/codexray_analyser)](https://pypi.org/project/codexray-analyser/)
+[![PyPI version](https://img.shields.io/pypi/v/codexray_analyser?cacheSeconds=300)](https://pypi.org/project/codexray-analyser/)
 [![Python versions](https://img.shields.io/pypi/pyversions/codexray-analyser)](https://pypi.org/project/codexray-analyser/)
 [![License](https://img.shields.io/pypi/l/codexray-analyser)](https://github.com/Merlins-Sanctum/codexray-analyser/blob/main/LICENSE)
 [![CI](https://img.shields.io/github/actions/workflow/status/Merlins-Sanctum/codexray-analyser/ci.yml?branch=main&label=CI)](https://github.com/Merlins-Sanctum/codexray-analyser/actions/workflows/ci.yml)
-
-Latest stable package: `0.1.4` (tag `v0.1.4`)
+[![Latest tag](https://img.shields.io/github/v/tag/Merlins-Sanctum/codexray-analyser?sort=semver&label=tag)](https://github.com/Merlins-Sanctum/codexray-analyser/tags)
 
 ![Codexray CLI demo](https://raw.githubusercontent.com/Merlins-Sanctum/codexray-analyser/main/assets/demo.gif)
 
