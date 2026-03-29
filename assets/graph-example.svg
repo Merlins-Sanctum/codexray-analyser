@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
+  <rect width="1200" height="700" fill="#0b1020"/>
+  <text x="40" y="52" fill="#e5e7eb" font-family="Arial, sans-serif" font-size="28">Codexray Graph Example</text>
+  <text x="40" y="82" fill="#9ca3af" font-family="Arial, sans-serif" font-size="16">Sample rendered view of file, function, and import relationships</text>
+
+  <line x1="210" y1="350" x2="560" y2="200" stroke="#4b5563" stroke-width="2"/>
+  <line x1="210" y1="350" x2="560" y2="350" stroke="#4b5563" stroke-width="2"/>
+  <line x1="560" y1="200" x2="930" y2="180" stroke="#4b5563" stroke-width="2"/>
+  <line x1="560" y1="350" x2="930" y2="330" stroke="#4b5563" stroke-width="2"/>
+  <line x1="560" y1="350" x2="930" y2="470" stroke="#4b5563" stroke-width="2"/>
+
+  <circle cx="210" cy="350" r="26" fill="#10b981" stroke="#a7f3d0" stroke-width="2"/>
+  <text x="250" y="356" fill="#e5e7eb" font-family="Consolas, monospace" font-size="18">file:database.py</text>
+
+  <circle cx="560" cy="200" r="24" fill="#60a5fa" stroke="#bfdbfe" stroke-width="2"/>
+  <text x="600" y="206" fill="#e5e7eb" font-family="Consolas, monospace" font-size="17">function:get_conn</text>
+
+  <circle cx="560" cy="350" r="24" fill="#60a5fa" stroke="#bfdbfe" stroke-width="2"/>
+  <text x="600" y="356" fill="#e5e7eb" font-family="Consolas, monospace" font-size="17">function:get_cursor</text>
+
+  <circle cx="930" cy="180" r="22" fill="#f59e0b" stroke="#fcd34d" stroke-width="2"/>
+  <text x="970" y="186" fill="#e5e7eb" font-family="Consolas, monospace" font-size="16">import:psycopg2.connect</text>
+
+  <circle cx="930" cy="330" r="22" fill="#f59e0b" stroke="#fcd34d" stroke-width="2"/>
+  <text x="970" y="336" fill="#e5e7eb" font-family="Consolas, monospace" font-size="16">import:get_dsn</text>
+
+  <circle cx="930" cy="470" r="22" fill="#f59e0b" stroke="#fcd34d" stroke-width="2"/>
+  <text x="970" y="476" fill="#e5e7eb" font-family="Consolas, monospace" font-size="16">import:conn.cursor</text>
+
+  <text x="320" y="250" fill="#9ca3af" font-family="Arial, sans-serif" font-size="14">contains</text>
+  <text x="330" y="335" fill="#9ca3af" font-family="Arial, sans-serif" font-size="14">contains</text>
+  <text x="735" y="188" fill="#9ca3af" font-family="Arial, sans-serif" font-size="14">calls</text>
+  <text x="735" y="338" fill="#9ca3af" font-family="Arial, sans-serif" font-size="14">calls</text>
+  <text x="735" y="430" fill="#9ca3af" font-family="Arial, sans-serif" font-size="14">calls</text>
+</svg>

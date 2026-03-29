@@ -1,8 +1,25 @@
 # Codexray
 
+[![PyPI version](https://img.shields.io/pypi/v/codexray-analyser)](https://pypi.org/project/codexray-analyser/)
+[![Python versions](https://img.shields.io/pypi/pyversions/codexray-analyser)](https://pypi.org/project/codexray-analyser/)
+[![License](https://img.shields.io/pypi/l/codexray-analyser)](LICENSE)
+[![CI](https://img.shields.io/github/actions/workflow/status/Merlins-Sanctum/codexray-analyser/ci.yml?branch=main&label=CI)](https://github.com/Merlins-Sanctum/codexray-analyser/actions/workflows/ci.yml)
+
+![Codexray CLI demo placeholder](assets/demo-placeholder.svg)
+
+> Replace this with a real GIF at `assets/demo.gif` when ready.
+
+```bash
+codexray "C:\path\to\database.py" --summary --findings-only --min-severity high
+```
+
 Codexray is an offline-first Python static analyser for `.py` and `.ipynb` files.
 It helps teams inspect security risks, code quality problems, and dependency patterns
 without sending source code outside the local machine.
+
+## Why Codexray?
+
+You are about to send a notebook or script to a client and want confidence that nothing risky is hidden inside. Run Codexray first. It checks for risky patterns such as shell execution and dangerous builtins, highlights dependency concerns, and gives you a graph of call and import relationships while keeping all source analysis local to your machine.
 
 ## What Codexray does
 
@@ -59,6 +76,56 @@ Save output to JSON:
 codexray ./my_project --output codexray-report.json
 ```
 
+Print only a compact summary:
+
+```bash
+codexray ./my_project --summary
+```
+
+Print findings only (no graph payload):
+
+```bash
+codexray ./my_project --findings-only
+```
+
+Show only high and critical findings:
+
+```bash
+codexray ./my_project --findings-only --min-severity high
+```
+
+Export graph for Graphviz:
+
+```bash
+codexray ./my_project --graph-dot codexray-graph.dot
+```
+
+Export graph to an offline HTML visual:
+
+```bash
+codexray ./my_project --graph-html codexray-graph.html
+```
+
+## Dependency graph preview
+
+![Codexray graph example](assets/graph-example.svg)
+
+Sample graph JSON snippet:
+
+```json
+{
+  "nodes": [
+    { "node_id": "file:database.py", "kind": "file", "label": "database.py" },
+    { "node_id": "function:database.py:get_conn", "kind": "function", "label": "get_conn" },
+    { "node_id": "import:psycopg2.connect", "kind": "import", "label": "psycopg2.connect" }
+  ],
+  "edges": [
+    { "source": "file:database.py", "target": "function:database.py:get_conn", "relation": "contains" },
+    { "source": "function:database.py:get_conn", "target": "import:psycopg2.connect", "relation": "calls" }
+  ]
+}
+```
+
 ## Python API usage
 
 ```python
@@ -97,6 +164,8 @@ Graph output contains:
 
 - `nodes`: entities such as files, imports, and functions
 - `edges`: relationships such as `imports`, `contains`, and `calls`
+- DOT export for Graphviz via `--graph-dot`
+- offline HTML graph visual via `--graph-html`
 
 Typical use:
 
@@ -131,6 +200,29 @@ Examples:
   - Increase limits in config for controlled internal usage.
 - Empty findings:
   - Confirm the target path includes `.py` or `.ipynb` sources.
+
+## How to create the demo GIF
+
+Record a short terminal run (10 to 20 seconds) that shows:
+
+1. `codexray --summary`
+2. `codexray --graph-html`
+3. opening the generated graph HTML
+
+Then convert to GIF with `ffmpeg` and save as `assets/demo.gif`:
+
+```bash
+ffmpeg -i demo.mp4 -vf "fps=10,scale=1200:-1:flags=lanczos" -loop 0 assets/demo.gif
+```
+
+Keep file size lightweight so README loads quickly.
+
+## Launch checklist
+
+- Share a short product post on LinkedIn with the demo GIF.
+- Post in Python and data engineering communities with one practical use case.
+- Add one issue template for feature requests and invite feedback.
+- Ask first users to share real files where summary mode helped.
 
 ## Local development
 
