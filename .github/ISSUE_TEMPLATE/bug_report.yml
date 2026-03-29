@@ -1,5 +1,5 @@
 name: Bug report
-description: Report a bug in pyscope-local-analyzer
+description: Report a bug in codexray-analyser
 title: "[Bug]: "
 labels: [bug]
 body:
@@ -16,7 +16,7 @@ body:
       label: Steps to reproduce
       placeholder: |
         1. Run ...
-        2. Analyze ...
+        2. Analyse ...
         3. Observe ...
     validations:
       required: true

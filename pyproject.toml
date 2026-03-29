@@ -3,9 +3,9 @@ requires = ["hatchling>=1.25.0"]
 build-backend = "hatchling.build"
 
 [project]
-name = "codexray-analyzer"
+name = "codexray-analyser"
 version = "0.1.0"
-description = "Offline-first static analyzer for Python files and notebooks."
+description = "Offline-first static analyser for Python files and notebooks."
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }
@@ -26,9 +26,9 @@ classifiers = [
 dependencies = []
 
 [project.urls]
-Homepage = "https://github.com/Merlins-Sanctum/pyscope"
-Repository = "https://github.com/Merlins-Sanctum/pyscope"
-Issues = "https://github.com/Merlins-Sanctum/pyscope/issues"
+Homepage = "https://github.com/Merlins-Sanctum/codexray-analyser"
+Repository = "https://github.com/Merlins-Sanctum/codexray-analyser"
+Issues = "https://github.com/Merlins-Sanctum/codexray-analyser/issues"
 
 [project.scripts]
 codexray = "codexray.cli:main"

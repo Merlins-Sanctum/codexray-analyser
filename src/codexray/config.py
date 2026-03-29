@@ -2,7 +2,7 @@ from dataclasses import dataclass
 
 
 @dataclass(slots=True)
-class AnalyzerConfig:
+class AnalyserConfig:
     """Runtime safety controls and feature flags."""
 
     allow_network: bool = False

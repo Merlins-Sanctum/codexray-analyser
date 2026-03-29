@@ -1,6 +1,6 @@
 # Codexray
 
-Codexray is an offline-first Python static analyzer for `.py` and `.ipynb` files.
+Codexray is an offline-first Python static analyser for `.py` and `.ipynb` files.
 It helps teams inspect security risks, code quality problems, and dependency patterns
 without sending source code outside the local machine.
 
@@ -24,30 +24,30 @@ This tool is designed for local analysis workflows where proprietary code must s
 ## Installation
 
 ```bash
-pip install codexray-analyzer
+pip install codexray-analyser
 ```
 
 ## Quick start with CLI
 
-Analyze a folder:
+Analyse a folder:
 
 ```bash
 codexray ./my_project
 ```
 
-Analyze a single file:
+Analyse a single file:
 
 ```bash
 codexray ./my_project/app.py
 ```
 
-Analyze a code snippet:
+Analyse a code snippet:
 
 ```bash
 codexray --snippet "import os; os.system('whoami')"
 ```
 
-Analyze only specific lines from one file:
+Analyse only specific lines from one file:
 
 ```bash
 codexray ./my_project/app.py --start-line 40 --end-line 80
@@ -62,11 +62,11 @@ codexray ./my_project --output codexray-report.json
 ## Python API usage
 
 ```python
-from codexray import analyze_file_snippet, analyze_path, analyze_snippet
+from codexray import analyse_file_snippet, analyse_path, analyse_snippet
 
-project_result = analyze_path("./my_project")
-snippet_result = analyze_snippet("import os\nos.system('whoami')")
-range_result = analyze_file_snippet("./my_project/app.py", 20, 50)
+project_result = analyse_path("./my_project")
+snippet_result = analyse_snippet("import os\nos.system('whoami')")
+range_result = analyse_file_snippet("./my_project/app.py", 20, 50)
 ```
 
 ## Understanding the report
@@ -75,7 +75,7 @@ Each result returns:
 
 - `findings`: list of detected issues.
 - `graph`: nodes and edges representing imports, files, and function relationships.
-- `metadata`: run information such as analyzed path and offline mode state.
+- `metadata`: run information such as analysed path and offline mode state.
 
 Example finding shape:
 

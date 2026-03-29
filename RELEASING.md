@@ -4,13 +4,13 @@ This project uses GitHub Actions trusted publishing for PyPI.
 
 ## One-time setup
 
-1. Create a GitHub repository named `pyscope`.
+1. Create a GitHub repository named `codexray-analyser`.
 2. Push this code to the default branch (`main`).
 3. Create the PyPI project once with the exact package name:
-   - `codexray-analyzer`
+   - `codexray-analyser`
 4. In PyPI project settings, add a trusted publisher:
    - Owner: your GitHub user/org
-   - Repository: `pyscope`
+   - Repository: `codexray-analyser`
    - Workflow: `.github/workflows/publish.yml`
    - Environment: `pypi`
 5. In GitHub repository settings, create environment `pypi`.
